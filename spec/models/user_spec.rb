@@ -10,5 +10,9 @@ describe User do
 
   it { should have_secure_password }
   it { should validate_presence_of :email }
-
+  it 'sends a welcome email to a new user' do
+    user = FactoryGirl.build(:user)
+    expect(UserMailer).to receive(:signup_confirmation).with(user)
+    user.save
+  end
 end
