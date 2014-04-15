@@ -21,4 +21,14 @@ describe User do
     click_button 'Log In'
     page.should have_content "Logged In"
   end
+
+  it 'logs out a user' do
+    user = FactoryGirl.create(:user)
+    visit login_path
+    fill_in "username", with: user.username
+    fill_in "password", with: user.password
+    click_button 'Log In'
+    click_link 'Log Out'
+    page.should have_content "Logged Out"
+  end
 end
