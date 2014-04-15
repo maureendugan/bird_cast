@@ -14,6 +14,7 @@ gem 'rghost'
 gem 'bcrypt'
 
 
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -29,6 +30,7 @@ group :test, :development do
   gem 'launchy'
   gem 'letter_opener'
   gem 'poltergeist'
+  gem 'faker'
 end
 
 group :test do

@@ -13,7 +13,7 @@
         <%= link_to 'Log Out', logout_path, class: "navbar-text" %>
         <%= link_to 'Profile Page', user_path(current_user), class: "navbar-text" %>
       <% else %>
-        <%= link_to 'Sign up', new_user_path, class: "navbar-text" %>
+        <%= link_to 'Sign Up', new_user_path, class: "navbar-text" %>
         <%= link_to 'Sign In', login_path, class: "navbar-text" %>
       <% end %>
     </div>
