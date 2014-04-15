@@ -1,11 +1,11 @@
-<%= form_for @tweet do |form| %>
-  <div class="form-group">
-    <%= form.label :text, class: "col-md-1 control-label" %>
-    <div class="col-md-6">
-      <%= form.text_field :text, class: "form-control" %>
-    </div>
-  </div><br><br>
+<%= render '/layouts/errors', object: @tweet %>
 
-  <%= form.submit(class: 'btn btn-success') %>
+<%= form_for @tweet, remote: true do |form| %>
+  <div class="form-group">
+    <p><%= form.text_area :text, class: "form-control", id: "tweet-box", placeholder: "Bird Cast Yourself..." %></p>
+  </div>
+  <div class="form-group">
+    <p><%= form.submit(class: 'btn btn-success') %></p>
+  </div>
 <% end %>
 
