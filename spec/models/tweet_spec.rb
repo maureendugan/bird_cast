@@ -8,5 +8,4 @@ describe Tweet do
             is_at_least(3).
             is_at_most(150) }
 
-
 end

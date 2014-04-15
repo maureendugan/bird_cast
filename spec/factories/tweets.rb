@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :tweet do
-    user_id 1
-    text "MyString"
+    text Faker::Lorem.characters(80)
   end
 end

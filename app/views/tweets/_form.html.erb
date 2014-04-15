@@ -1,0 +1,11 @@
+<%= form_for @tweet do |form| %>
+  <div class="form-group">
+    <%= form.label :text, class: "col-md-1 control-label" %>
+    <div class="col-md-6">
+      <%= form.text_field :text, class: "form-control" %>
+    </div>
+  </div><br><br>
+
+  <%= form.submit(class: 'btn btn-success') %>
+<% end %>
+
