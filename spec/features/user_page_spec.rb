@@ -15,19 +15,13 @@ describe User do
 
   it 'allows a user to sign in with corrent credentials' do
     user = FactoryGirl.create(:user)
-    visit login_path
-    fill_in "username", with: user.username
-    fill_in "password", with: user.password
-    click_button 'Log In'
+    sign_in(user)
     page.should have_content "Logged In"
   end
 
   it 'logs out a user' do
     user = FactoryGirl.create(:user)
-    visit login_path
-    fill_in "username", with: user.username
-    fill_in "password", with: user.password
-    click_button 'Log In'
+    sign_in(user)
     click_link 'Log Out'
     page.should have_content "Logged Out"
   end
