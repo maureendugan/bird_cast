@@ -1,22 +1,14 @@
 require 'spec_helper'
 
 describe Tweet do
-  it "should be able to post a new tweet" do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
-    visit user_path(user)
+  it "posts a new tweet" do
     tweet = FactoryGirl.build(:tweet)
-    fill_in 'tweet-box', with: tweet.text
-    click_button 'Create Tweet'
-    page.should have_content "#{user.name} added a tweet"
+    create_sign_in_user_create_tweet(tweet)
+    page.should have_content "#{tweet.text}"
   end
-  it "should delete a tweet" do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
-    visit user_path(user)
+  it "deletes a tweet" do
     tweet = FactoryGirl.build(:tweet)
-    fill_in 'tweet-box', with: tweet.text
-    click_button 'Create Tweet'
+    create_sign_in_user_create_tweet(tweet)
     click_link 'Delete'
     page.should have_no_content "#{tweet.text}"
   end
