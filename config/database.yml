@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: bird_cast_development
+
+test:
+  adapter: postgresql
+  database: bird_cast_test
