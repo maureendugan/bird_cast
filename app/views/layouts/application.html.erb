@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <% if current_user %>
+        <%= link_to 'Log Out', logout_path, class: "navbar-text" %>
+        <%= link_to 'Profile Page', user_path(current_user), class: "navbar-text" %>
+      <% else %>
+        <%= link_to 'Sign up', new_user_path, class: "navbar-text" %>
+        <%= link_to 'Sign In', login_path, class: "navbar-text" %>
+      <% end %>
+    </div>
+  </nav>
+  <div class="container">
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% elsif flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>
