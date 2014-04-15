@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true
 
+  has_many :tweets
+
   after_create :send_welcome_message
 
   def send_welcome_message

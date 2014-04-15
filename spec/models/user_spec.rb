@@ -15,4 +15,6 @@ describe User do
     expect(UserMailer).to receive(:signup_confirmation).with(user)
     user.save
   end
+
+  it { should have_many :tweets }
 end
