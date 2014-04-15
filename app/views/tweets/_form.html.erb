@@ -1,4 +1,6 @@
-<%= render '/layouts/errors', object: @tweet %>
+<div id="tweet-errors">
+  <%= render '/layouts/errors', object: @tweet %>
+</div>
 
 <%= form_for @tweet, remote: true do |form| %>
   <div class="form-group">

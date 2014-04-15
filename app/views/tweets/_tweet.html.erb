@@ -1,0 +1,18 @@
+<div id="text-<%= object.id %>">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-10">
+        <%= object.text %>
+      </div>
+      <% if current_user.id == @user.id %>
+        <div class="col-md-2">
+          <%= link_to "Delete", tweet_path(object),
+                data: {confirm: "Are you sure?",
+                method: "delete"},
+                class: 'btn btn-danger btn-xs',
+                remote: true %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

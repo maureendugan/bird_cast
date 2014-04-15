@@ -1,5 +1,7 @@
-$('#tweet-box').val("");
-$('#tweets').prepend('<div class="well">' +
-                        '<%= @tweet.text %>' +
-                      '</div>');
-
+<% if @tweet.id.nil? %>
+  $('#tweet-errors').html('<%= j render "/layouts/errors", object: @tweet %>');
+<% else %>
+  $('#tweet-box').val("");
+  $('#tweets').prepend('<%= j render "tweets/tweet", object: @tweet %>');
+  $('#tweet-errors').html('');
+<% end %>

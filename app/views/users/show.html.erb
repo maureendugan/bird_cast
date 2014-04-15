@@ -1,13 +1,14 @@
 <h1><%= @user.name %></h1>
 
-<div class="col-md-4">
-  <%= render 'tweets/form' %>
-</div>
+<% if current_user.id == @user.id %>
 
-<div class="col-md-8" id="tweets">
-<% @user.tweets.reverse.each do |tweet| %>
-  <div class="well">
-      <%= tweet.text %>
+  <div class="col-md-4">
+    <%= render 'tweets/form' %>
   </div>
 <% end %>
+
+<div class="col-md-8" id="tweets">
+  <% @user.tweets.reverse.each do |tweet| %>
+    <%= render 'tweets/tweet', object: tweet %>
+  <% end %>
 </div>

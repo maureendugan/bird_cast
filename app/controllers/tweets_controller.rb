@@ -9,15 +9,14 @@ class TweetsController < ApplicationController
     @user = current_user
     if @tweet.save
       current_user.tweets << @tweet
-      flash[:notice] = "#{current_user.name} added a tweet."
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
         format.js
       end
     else
       respond_to do |format|
-        format.html { render 'users/show' }
-        format.js
+        format.html { redirect_to :back }
+        format.js { render 'create' }
       end
     end
   end
@@ -28,8 +27,12 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet = Tweet.find(params[:id])
+    @tweet_id = @tweet.id
     @tweet.destroy
-    redirect_to user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   private
