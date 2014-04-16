@@ -9,8 +9,6 @@ class Tweet < ActiveRecord::Base
     end
     users
   end
-
-
 end
 
 

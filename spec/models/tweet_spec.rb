@@ -15,6 +15,4 @@ describe Tweet do
                                 user_id: 8 })
     test_tweet.check_for_user.should eq [test_user]
   end
-
-
 end

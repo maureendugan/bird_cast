@@ -8,10 +8,10 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @user = current_user
     if @tweet.save
-      users = @tweet.check_for_user
-      if !users.nil?
-        users.each do |user|
-          UserMailer.mention_confirmation(user)
+      user_mail = @tweet.check_for_user
+      if !user_mail.nil?
+        user_mail.each do |message|
+          UserMailer.mention_confirmation(message).deliver
         end
       end
       current_user.tweets << @tweet
