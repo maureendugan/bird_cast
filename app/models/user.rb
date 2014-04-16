@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
   def send_welcome_message
     UserMailer.signup_confirmation(self)
   end
+
+  def send_confirmation_message
+    UserMailer.mention_confirmation(self)
+  end
+
 end

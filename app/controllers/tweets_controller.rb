@@ -8,6 +8,12 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
     @user = current_user
     if @tweet.save
+      users = @tweet.check_for_user
+      if !users.nil?
+        users.each do |user|
+          UserMailer.mention_confirmation(user)
+        end
+      end
       current_user.tweets << @tweet
       respond_to do |format|
         format.html { redirect_to user_path(@user) }

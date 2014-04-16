@@ -5,4 +5,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail to: user.email, subject: "Thank You for Joining the Flock!"
   end
+
+  def mention_confirmation(user)
+    @user = user
+    mail to: user.email, subject: "Someone Tweeted About You!"
+  end
 end

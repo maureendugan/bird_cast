@@ -16,5 +16,15 @@ describe User do
     user.save
   end
 
+  it 'sends a mention email when a user is mentioned in a tweet' do
+    user = FactoryGirl.create(:user)
+    tweet = Tweet.create({ text: "lalalallalalalallal dhsdkjfhsdjf kdjfksdjf
+                                      #{user.username}",
+                                user_id: 8 })
+    expect(UserMailer).to receive(:mention_confirmation).with(user)
+    tweet.check_for_user
+  end
+
+
   it { should have_many :tweets }
 end
