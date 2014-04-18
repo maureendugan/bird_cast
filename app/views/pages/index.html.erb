@@ -1,0 +1,8 @@
+<h1>Welcome to Birdcast</h1>
+
+<div class="col-md-8">
+  <% @tweets.reverse.each do |tweet| %>
+    <%= render 'tweets/tweet', object: tweet %>
+  <% end %>
+</div>
+
