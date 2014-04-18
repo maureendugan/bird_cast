@@ -25,4 +25,8 @@ describe User do
   end
 
   it { should have_many :tweets }
+
+
+  it { should respond_to(:relationships) }
+
 end
