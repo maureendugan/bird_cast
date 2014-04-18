@@ -18,13 +18,11 @@ describe User do
   it 'sends a mention email when a user is mentioned in a tweet' do
     user = FactoryGirl.create(:user)
     tweet = Tweet.create({ text: "lalalallalalalallal dhsdkjfhsdjf kdjfksdjf
-                                      #{user.username}",
+                                      @#{user.username}",
                                 user_id: 8 })
     tweet.check_for_user
     ActionMailer::Base.deliveries.last.to.should eq [user.email]
-
   end
-
 
   it { should have_many :tweets }
 end
