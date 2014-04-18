@@ -1,9 +1,18 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+
+  sequence :name do |n|
+    name = Faker::Name.name
+  end
+
+  sequence :username do |n|
+    username = Faker::Internet.user_name
+  end
+
   factory :user do
-    name Faker::Name.name
-    username Faker::Internet.user_name
+    name
+    username
     password Faker::Internet.password
     password_confirmation { |u| u.password }
     email Faker::Internet.email

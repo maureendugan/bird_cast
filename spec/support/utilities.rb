@@ -6,7 +6,7 @@ def sign_in(user)
 end
 
 def create_sign_in_user_create_tweet(tweet)
-  user = FactoryGirl.create(:user)
+  user = tweet.user
   sign_in(user)
   visit user_path(user)
   fill_in 'tweet-box', with: tweet.text

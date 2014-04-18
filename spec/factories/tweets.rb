@@ -1,7 +1,12 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  sequence :text do |n|
+    @text = Faker::Lorem.sentence
+  end
+
   factory :tweet do
-    text Faker::Lorem.characters(80)
+    text
+    user
   end
 end
