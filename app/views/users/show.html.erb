@@ -1,5 +1,13 @@
 <h1><%= @user.name %></h1>
 
+<% if !@user.following?(current_user).nil? %>
+  <p>button "Follow"</p>
+<% elsif @user.following?(current_user) %>
+  <p>button "Unfollow"</p>
+<% else %>
+ <!-- User does not need to follow or unfollow themself -->
+<% end %>
+
 <% if current_user.id == @user.id %>
 
   <div class="col-md-4">
@@ -12,3 +20,6 @@
     <%= render 'tweets/tweet', object: tweet %>
   <% end %>
 </div>
+
+<h3><%= @user.followed_users.length %> following</h3>
+<h3><%= Relationship.where(followed_id: @user.id).length %> followers</h3>
