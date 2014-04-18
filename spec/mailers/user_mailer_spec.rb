@@ -3,10 +3,10 @@ require "spec_helper"
 describe UserMailer do
   describe "signup_confirmation" do
     user = FactoryGirl.build(:user)
-    user.id = 3
     let(:mail) { UserMailer.signup_confirmation(user) }
 
     it "renders the headers" do
+      user.save
       mail.subject.should eq("Thank You for Joining the Flock!")
       mail.to.should eq(["#{user.email}"])
       mail.from.should eq(["admin-birdcast@example.com"])
