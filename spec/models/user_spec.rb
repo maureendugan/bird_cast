@@ -26,8 +26,26 @@ describe User do
 
   it { should have_many :tweets }
 
-
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_users) }
+  it { should respond_to(:following?) }
+  it { should respond_to(:follow!) }
+
+  describe "following" do
+    # let(:other_user) { FactoryGirl.create(:user) }
+    # before do
+    #   @user.save
+    #   @user.follow!(other_user)
+    # end
+    it 'should allow one user to follow another' do
+    other_user = FactoryGirl.create(:user)
+    user = FactoryGirl.create(:user)
+    user.follow!(other_user)
+    user.following?(other_user).class.should eq Relationship
+    user.followed_users.should include other_user
+    # it { should be_following(other_user) }
+    # its(:followed_users) { should include(other_user) }
+  end
+  end
 
 end

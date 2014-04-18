@@ -20,4 +20,12 @@ class User < ActiveRecord::Base
     UserMailer.mention_confirmation(self).deliver
   end
 
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
 end
