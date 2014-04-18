@@ -28,5 +28,6 @@ describe User do
 
 
   it { should respond_to(:relationships) }
+  it { should respond_to(:followed_users) }
 
 end

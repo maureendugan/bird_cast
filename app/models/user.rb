@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   has_many :tweets
+  has_many :followed_users, through: :relationships, source: :followed
 
   after_create :send_welcome_message
 
