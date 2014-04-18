@@ -2,10 +2,11 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="col-md-10">
-        <strong><%= object.user.username %>: </strong>
+
+        <strong><%= link_to "#{object.user.username}", user_path(object.user), class: "btn btn-info" %>  </strong>
         <%= object.text %>
       </div>
-      <% if current_user.id == object.user_id %>
+      <% if !current_user.nil? && current_user.id == object.user_id %>
         <div class="col-md-2">
           <%= link_to "Delete", tweet_path(object),
                 data: {confirm: "Are you sure?",

@@ -1,6 +1,8 @@
 <h1><%= @user.name %></h1>
 
-<% if !@user.following?(current_user).nil? %>
+<% if current_user.nil?  %>
+  <p><%= link_to "Create Account to Follow #{@user.name}", new_user_path %></p>
+<% elsif !@user.following?(current_user).nil? %>
   <p>button "Follow"</p>
 <% elsif @user.following?(current_user) %>
   <p>button "Unfollow"</p>
@@ -8,7 +10,7 @@
  <!-- User does not need to follow or unfollow themself -->
 <% end %>
 
-<% if current_user.id == @user.id %>
+<% if !current_user.nil? && current_user.id == @user.id %>
 
   <div class="col-md-4">
     <%= render 'tweets/form' %>
