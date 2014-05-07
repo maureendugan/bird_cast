@@ -11,6 +11,13 @@ feature 'User authentication' do
     fill_in :user_email, with: 'ernie@email.com'
     click_button "Create User"
     page.should have_content "Your account has been created"
+
+    open_email('ernie@email.com')
+    current_email.should have_content 'Dear Ernie'
+    current_email.subject.should == 'Thank You for Joining the Flock!'
+    current_email.from.should == ['admin-birdcast@example.com']
+    current_email.click_link 'Your Profile'
+    page.should have_content 'Ernie'
   end
 
   it 'allows a user to sign in with corrent credentials' do

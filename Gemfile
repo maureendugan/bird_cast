@@ -11,6 +11,7 @@ gem 'bcrypt'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
 end
 
 group :test, :development do
@@ -24,8 +25,8 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'letter_opener'
   gem 'poltergeist'
+  gem 'capybara-email'
   gem 'faker'
   gem 'shoulda-matchers'
   gem 'coveralls', require: false

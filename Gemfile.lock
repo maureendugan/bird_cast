@@ -42,6 +42,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-email (2.3.0)
+      capybara (~> 2.2.0)
+      mail
     cliver (0.3.2)
     coderay (1.1.0)
     coveralls (0.7.0)
@@ -176,6 +179,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   capybara
+  capybara-email
   coveralls
   database_cleaner
   factory_girl_rails
