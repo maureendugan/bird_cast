@@ -1,9 +1,4 @@
 class TweetsController < ApplicationController
-
-  def new
-    @tweet = Tweet.new
-  end
-
   def create
     @tweet = Tweet.new(tweet_params)
     @user = current_user
@@ -17,7 +12,7 @@ class TweetsController < ApplicationController
       current_user.tweets << @tweet
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
-        format.js
+        format.js { render 'create' }
       end
     else
       respond_to do |format|
@@ -27,9 +22,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  def show
-    @tweet = Tweet.find(params[:id])
-  end
 
   def destroy
     @tweet = Tweet.find(params[:id])

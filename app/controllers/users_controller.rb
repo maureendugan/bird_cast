@@ -3,10 +3,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def index
-    @users = User.all
-  end
-
   def create
     @user = User.new(user_params)
 
@@ -25,30 +21,8 @@ class UsersController < ApplicationController
     @tweet = Tweet.new
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  private
 
-  def update
-    @user = User.find(params[:id])
-
-    if @user.update(user_params)
-      flash[:notice] = "Your account was updated!"
-      redirect_to user_path(@user)
-    else
-      flash[:alert] = "There was a problem updating your account"
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "Your account was deactivated!"
-    redirect_to root_path
-  end
-
-private
   def user_params
     params.require(:user).permit(:name, :email, :username, :password, :password_confirmation)
   end

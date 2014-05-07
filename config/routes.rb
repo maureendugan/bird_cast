@@ -4,7 +4,7 @@ BirdCast::Application.routes.draw do
 
   root to: 'pages#index'
 
-  resources :users
+  resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tweets, except: [:edit, :update, :index]
+  resources :tweets, only: [:create, :destroy]
 end
