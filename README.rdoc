@@ -1,5 +1,8 @@
 == Bird Cast
 
+{<img src="https://travis-ci.org/moedu23/bird_cast.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/moedu23/bird_cast]
+{<img src="https://coveralls.io/repos/moedu23/bird_cast/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/moedu23/bird_cast]
+
 ==== Epicodus Week 9, Day 2
 
 <em>Maureen Dugan, Liz Tom and Angela Yen</em>
