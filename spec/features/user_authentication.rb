@@ -20,7 +20,7 @@ feature 'User authentication' do
     page.should have_content 'Ernie'
   end
 
-  scenario 'allows a user to sign in with correct credentials' do
+  scenario 'allows a user to sign in with correct credentials and log out' do
     FactoryGirl.create(:user, username: 'Edith', password: 'wordpass')
 
     visit '/'
@@ -29,11 +29,7 @@ feature 'User authentication' do
     fill_in 'password', with: 'wordpass'
     click_button "Log In"
     page.should have_content "Logged In"
-  end
 
-  it 'logs out a user' do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
     click_link 'Log Out'
     page.should have_content "Logged Out"
   end
