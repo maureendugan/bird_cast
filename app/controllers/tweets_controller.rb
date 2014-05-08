@@ -1,27 +1,11 @@
 class TweetsController < ApplicationController
   def create
-    @tweet = Tweet.new(tweet_params)
-    @user = current_user
-    if @tweet.save
-      user_mail = @tweet.check_for_user
-      if !user_mail.nil?
-        user_mail.each do |message|
-          UserMailer.mention_confirmation(message).deliver
-        end
-      end
-      current_user.tweets << @tweet
-      respond_to do |format|
-        format.html { redirect_to user_path(@user) }
-        format.js { render 'create' }
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js { render 'create' }
-      end
+    current_user.tweets << Tweet.create(tweet_params)
+    respond_to do |format|
+      format.html { redirect_to user_path(current_user) }
+      format.js { render 'create' }
     end
   end
-
 
   def destroy
     @tweet = Tweet.find(params[:id])
