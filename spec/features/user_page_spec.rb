@@ -20,9 +20,14 @@ feature 'User authentication' do
     page.should have_content 'Ernie'
   end
 
-  it 'allows a user to sign in with corrent credentials' do
-    user = FactoryGirl.create(:user)
-    sign_in(user)
+  scenario 'allows a user to sign in with correct credentials' do
+    FactoryGirl.create(:user, username: 'Edith', password: 'wordpass')
+
+    visit '/'
+    click_link 'Sign In'
+    fill_in 'username', with: 'Edith'
+    fill_in 'password', with: 'wordpass'
+    click_button "Log In"
     page.should have_content "Logged In"
   end
 

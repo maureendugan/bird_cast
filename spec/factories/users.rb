@@ -14,7 +14,7 @@ FactoryGirl.define do
     name
     username
     password Faker::Internet.password
-    password_confirmation { |u| u.password }
+    password_confirmation { password }
     email Faker::Internet.email
   end
 end
