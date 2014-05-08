@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature 'User manages tweets' do
+
   scenario 'lets an authorized user post a new tweet' do
     sign_in(FactoryGirl.create(:user, username: 'Ernest'))
 
@@ -8,6 +9,7 @@ feature 'User manages tweets' do
     click_button 'Create Tweet'
     page.should have_content 'Ernest This is a great tweet'
   end
+
   scenario 'user deletes their own tweet' do
     sign_in(FactoryGirl.create(:user, username: 'Evelyn'))
 
@@ -16,15 +18,4 @@ feature 'User manages tweets' do
     click_link 'Delete'
     page.should_not have_content 'Evelyn this tweet should be deleted'
   end
-end
-
-describe Tweet do
-
-  it "deletes a tweet" do
-    tweet = FactoryGirl.build(:tweet)
-    create_sign_in_user_create_tweet(tweet)
-    click_link 'Delete'
-    page.should have_no_content "#{tweet.text}"
-  end
-
 end
