@@ -4,8 +4,8 @@ rvm:
   # 2.1.0 throws exception until issue is resolved: https://github.com/travis-ci/travis-ci/issues/2220
 
 # speed up bundle install, especially nokogiri
-install: bundle install --jobs=4 --deployment
 env:
   global:
+    - BUNDLE_JOBS=4
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
